@@ -33,17 +33,17 @@ class Payload extends Bundle {
   val length = UInt(3.W)
   val isComplete = Bool()
   val isCorrupt = Bool()
-  val isProvision = Bool() // Is this a request from the Provisioning interface?
-  val isRead = Bool() // Is this a read request?
+  val isProvision = Bool()
+  val isRead = Bool()
   val isLast = Bool()
   val id = UInt(8.W)
 }
 class Request extends Bundle {
-  val isProvision = Bool() // Is this a request from the Provisioning interface?
-  val isRead = Bool() // Is this a read request?
-  val data = UInt(64.W /* TODO */ )
-  val id = UInt(8.W /* TODO */ )
-  val size = UInt(3.W /* TODO */ )
+  val isProvision = Bool()
+  val isRead = Bool()
+  val data = UInt(64.W)
+  val id = UInt(8.W)
+  val size = UInt(3.W)
 }
 object Main extends App {
   println(
