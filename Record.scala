@@ -7,14 +7,16 @@ import chisel3._
 import chisel3.util._
 // _root_ disambiguates from package chisel3.util.circt if user imports chisel3.util._
 import _root_.circt.stage.ChiselStage
+import scala.collection.SeqMap
 
 class Foo extends Module {
-  val step = RegInit(8.U(16.W))
-  val concatBits = Cat(step, TestType.myType)
-  dontTouch(concatBits)
+  val record = new MyRecord
+  val din = IO(Flipped(record))
+
+  //DontCare :>= din
 }
-object TestType {
-  val myType = 5.U(16.W)
+class MyRecord extends Record {
+  val elements = SeqMap("finalize" -> Bool())
 }
 object Main extends App {
   println(

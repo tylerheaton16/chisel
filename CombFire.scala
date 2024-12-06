@@ -23,27 +23,10 @@ class Foo extends Module {
   }.otherwise {
     resp.valid := false.B
   }
-  when(resp.fire){
+  when(resp.fire) {
     resp.bits.data := 5.U(64.W)
   }
 
-}
-class Payload extends Bundle {
-  val payload = Vec(8, UInt(64.W))
-  val length = UInt(3.W)
-  val isComplete = Bool()
-  val isCorrupt = Bool()
-  val isProvision = Bool()
-  val isRead = Bool()
-  val isLast = Bool()
-  val id = UInt(8.W)
-}
-class Request extends Bundle {
-  val isProvision = Bool()
-  val isRead = Bool()
-  val data = UInt(64.W)
-  val id = UInt(8.W)
-  val size = UInt(3.W)
 }
 object Main extends App {
   println(
